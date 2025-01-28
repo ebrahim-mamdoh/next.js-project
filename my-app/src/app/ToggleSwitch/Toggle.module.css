@@ -1,0 +1,190 @@
+/* الشكل الرئيسي لزر التبديل */
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 34px;
+}
+
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+/* شكل المنزلق */
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  transition: 0.4s;
+  border-radius: 34px;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 26px;
+  width: 26px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  transition: 0.4s;
+  border-radius: 50%;
+}
+
+/* عند تفعيل الزر */
+input:checked + .slider {
+  background-color: #2196f3;
+}
+
+input:checked + .slider:before {
+  transform: translateX(26px);
+}
+
+/* تأثير الزر الدائري */
+.slider.round {
+  border-radius: 34px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}
+
+/* عناصر الشمس والقمر */
+.sun-moon {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* نقاط القمر */
+.moon-dot {
+  position: absolute;
+  border-radius: 50%;
+  background-color: gray;
+  opacity: 0;
+  transition: 0.4s;
+}
+
+#moon-dot-1 {
+  width: 6px;
+  height: 6px;
+  top: 5px;
+  left: 10px;
+}
+
+#moon-dot-2 {
+  width: 8px;
+  height: 8px;
+  top: 12px;
+  left: 3px;
+}
+
+#moon-dot-3 {
+  width: 5px;
+  height: 5px;
+  top: 18px;
+  left: 15px;
+}
+
+/* عند التفعيل تظهر النقاط */
+input:checked + .slider .moon-dot {
+  opacity: 1;
+}
+
+/* أشعة الضوء */
+.light-ray {
+  position: absolute;
+  background-color: white;
+  opacity: 0.1;
+  border-radius: 50%;
+  transition: 0.4s;
+}
+
+#light-ray-1 {
+  width: 40px;
+  height: 40px;
+  top: -10px;
+  left: -10px;
+}
+
+#light-ray-2 {
+  width: 50px;
+  height: 50px;
+  top: -15px;
+  left: -15px;
+}
+
+#light-ray-3 {
+  width: 60px;
+  height: 60px;
+  top: -20px;
+  left: -20px;
+}
+
+/* تأثير الغيوم */
+.cloud-light,
+.cloud-dark {
+  position: absolute;
+  border-radius: 50%;
+  background-color: #ccc;
+  opacity: 0;
+  transition: 0.4s;
+}
+
+.cloud-light {
+  background-color: #eee;
+}
+
+.cloud-dark {
+  background-color: #aaa;
+}
+
+/* عند التفعيل */
+input:checked + .slider .cloud-dark,
+input:checked + .slider .cloud-light {
+  opacity: 1;
+}
+
+/* تأثير النجوم */
+.stars {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  display: flex;
+  gap: 5px;
+  opacity: 0;
+  transition: 0.4s;
+}
+
+.star {
+  width: 6px;
+  height: 6px;
+  background-color: white;
+  border-radius: 50%;
+  animation: twinkle 2s infinite;
+}
+
+input:checked + .slider .stars {
+  opacity: 1;
+}
+
+/* حركة النجوم */
+@keyframes twinkle {
+  0%, 100% {
+    opacity: 0.8;
+  }
+  50% {
+    opacity: 1;
+  }
+}

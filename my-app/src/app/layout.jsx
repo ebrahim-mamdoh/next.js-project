@@ -1,24 +1,29 @@
-import { Geist, Geist_Mono, Lalezar } from "next/font/google";
+import { Geist, Geist_Mono,Montserrat   } from "next/font/google";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 import "./globals.css";
 import Navbar from "@/components/Navbar/Navbar";
 
 // استدعاء الخطوط في نطاق الوحدة (Module Scope)
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
+const bodyFont =Montserrat({
+  subsets:['latin'],
+  weight: ["400","900"],
+})
+// const geistSans = Geist({
+//   variable: "--font-geist-sans",
+//   subsets: ["latin"],
+// });
 
-const lalezar = Lalezar({
-  subsets: ["arabic"],
-  weight: ["400"],
-});
+// const geistMono = Geist_Mono({
+//   variable: "--font-geist-mono",
+//   subsets: ["latin"],
+// });
+
+// const lalezar = Lalezar({
+//   subsets: ["arabic"],
+//   weight: ["400"],
+// });
 
 export const metadata = {
   title: "Create Next App",
@@ -28,7 +33,7 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={`${geistSans.variable} ${geistMono.variable}`}>
+      <body className={`${bodyFont.className} `}>
       <Navbar/>
         {children}
       </body>

@@ -1,7 +1,8 @@
-import React from 'react'
 
 export default function category() {
   return (
-    <div>category</div>
+<>
+<h2>category</h2>
+</>
   )
 }
