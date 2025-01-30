@@ -1,10 +1,23 @@
-
-"use client"
-import React, { useState } from "react";
-import "./ToggleSwitch.css"; // سيتم استيراد ملف CSS هنا
+"use client";
+import React, { useState, useEffect } from "react";
+import "./ToggleSwitch.css";
 
 const ToggleSwitch = () => {
-  const [isChecked, setIsChecked] = useState(false);
+  // استرجاع الوضع الداكن من localStorage أو ضبطه على false كافتراضي
+  const [isChecked, setIsChecked] = useState(() => {
+    return localStorage.getItem("theme") === "dark";
+  });
+
+  // عند تغيير الحالة، نقوم بحفظها في localStorage وتحديث <body> 
+  useEffect(() => {
+    if (isChecked) {
+      document.body.classList.add("dark-mode");
+      localStorage.setItem("theme", "dark");
+    } else {
+      document.body.classList.remove("dark-mode");
+      localStorage.setItem("theme", "light");
+    }
+  }, [isChecked]);
 
   const handleToggle = () => {
     setIsChecked(!isChecked);

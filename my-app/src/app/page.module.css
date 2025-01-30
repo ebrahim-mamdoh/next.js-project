@@ -1,10 +1,11 @@
 .container {
   display: flex;
   align-items: center;
-  padding: 100px;
+  justify-content: space-between;
   width: 80%;
   margin: auto;
   gap: 50px;
+  
 }
 
 .col {
@@ -43,7 +44,6 @@
 .heroImage {
   width: 100%;
   height: auto;
-  max-width: 500px;
   object-fit: contain;
 }
 
