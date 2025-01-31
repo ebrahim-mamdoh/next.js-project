@@ -2,22 +2,22 @@
 import React, { useState, useEffect } from "react";
 import "./ToggleSwitch.css";
 
-const ToggleSwitch = () => {
-  // استرجاع الوضع الداكن من localStorage أو ضبطه على false كافتراضي
+const ToggleSwitch = ({ setIsDarkMode }) => {
   const [isChecked, setIsChecked] = useState(() => {
     return localStorage.getItem("theme") === "dark";
   });
 
-  // عند تغيير الحالة، نقوم بحفظها في localStorage وتحديث <body> 
   useEffect(() => {
     if (isChecked) {
       document.body.classList.add("dark-mode");
       localStorage.setItem("theme", "dark");
+      setIsDarkMode(true);
     } else {
       document.body.classList.remove("dark-mode");
       localStorage.setItem("theme", "light");
+      setIsDarkMode(false);
     }
-  }, [isChecked]);
+  }, [isChecked, setIsDarkMode]);
 
   const handleToggle = () => {
     setIsChecked(!isChecked);
