@@ -26,6 +26,7 @@ export default function Navbar() {
             <Link className="nav-item nav-link" href="/portfolio">Category</Link>
             <Link className="nav-item nav-link" href="/about">About</Link>
             <Link className="nav-item nav-link" href="/contact">Contact</Link>
+            <Link className="nav-item nav-link" href="/blog">Blog</Link>
           </div>
           <div className="d-flex">
             <ToggleSwitch setIsDarkMode={setIsDarkMode} />
