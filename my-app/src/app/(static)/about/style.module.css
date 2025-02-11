@@ -1,0 +1,21 @@
+/* Styling for the product card */
+.productCard {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    text-decoration: none; /* Remove underline from links */
+    display: block;
+  }
+  
+  .productCard:hover {
+    transform: translateY(-8px);
+    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.2);
+  }
+  
+  /* Image zoom effect on hover */
+  .cardImg {
+    transition: transform 0.3s ease;
+  }
+  
+  .productCard:hover .cardImg {
+    transform: scale(1.05);
+  }
+  
