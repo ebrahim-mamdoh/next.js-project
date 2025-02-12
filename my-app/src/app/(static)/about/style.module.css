@@ -12,10 +12,12 @@
   
   /* Image zoom effect on hover */
   .cardImg {
+    margin: auto;
     transition: transform 0.3s ease;
   }
   
   .productCard:hover .cardImg {
     transform: scale(1.05);
+
   }
   
