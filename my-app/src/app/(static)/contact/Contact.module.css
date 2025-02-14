@@ -1,0 +1,73 @@
+.contactContainer {
+    max-width: 80%;
+    margin: auto;
+    padding: 20px;
+    margin: 50px auto;
+    border-radius: 15px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+:global(body:not(.dark-mode)) .contactContainer {
+    background-color: #dee2e6; /* Light Mode */
+    color: #000;
+}
+
+:global(body.dark-mode) .contactContainer {
+    background-color: #212529; /* Dark Mode */
+    color: #fff;
+}
+
+
+
+/* h1 inside Contact */
+.contactContainer h1 {
+    color: var(--color-primary);
+}
+
+/* Form Styles */
+.contactForm {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.contactForm label {
+    text-align: left;
+    font-weight: bold;
+    color: var(--color-secondary);
+}
+
+.contactForm input,
+.contactForm textarea {
+    width: 100%;
+    padding: 10px;
+    border: 2px solid var(--color-secondary);
+    border-radius: var(--border-radius);
+    background: transparent;
+    color: inherit;
+    font-size: 16px;
+}
+
+.contactForm textarea {
+    min-height: 100px;
+    resize: vertical;
+}
+
+/* Submit Button */
+.submitButton {
+    background-color: var(--color-primary);
+    color: white;
+    border: none;
+    padding: 12px;
+    font-size: 18px;
+    cursor: pointer;
+    border-radius: var(--border-radius);
+    transition: 0.3s;
+}
+
+.submitButton:hover {
+    background-color: #1da837;
+}

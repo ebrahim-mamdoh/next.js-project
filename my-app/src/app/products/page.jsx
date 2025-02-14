@@ -4,7 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import styles from "./style.module.css";
 
-export default function Products() {
+export default function ProductList() {
   const [products, setProducts] = useState([]);
 
   useEffect(() => {
@@ -21,7 +21,7 @@ export default function Products() {
         {products.map((product) => (
           <div key={product.id} className="col-lg-4 col-md-6 col-12">
             <Link href={`/product/${product.id}`} className={styles.productCard}>
-              <div className={`card shadow-lg border-0 ${styles.card}`}>
+              <div className={`card shadow-lg ${styles.card}`}>
                 <Image
                   src={product.thumbnail}
                   alt={product.title}
@@ -31,8 +31,12 @@ export default function Products() {
                 />
                 <div className="card-body">
                   <h5 className="card-title">{product.title}</h5>
+                  <p className="text-muted">{product.brand}</p>
                   <p className="text-success fw-bold">💲 {product.price}</p>
                   <p>⭐ {product.rating} | 🏷️ {product.category}</p>
+                  <p className="text-warning">
+                    {product.stock > 10 ? "In Stock" : "Low Stock"}
+                  </p>
                 </div>
               </div>
             </Link>
