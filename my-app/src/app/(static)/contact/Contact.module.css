@@ -1,73 +1,87 @@
 .contactContainer {
+
     max-width: 80%;
-    margin: auto;
-    padding: 20px;
-    margin: 50px auto;
+    margin: 140px auto;
+    padding: 2rem;
     border-radius: 15px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    text-align: center;
-    transition: background-color 0.3s, color 0.3s;
-}
-
-:global(body:not(.dark-mode)) .contactContainer {
-    background-color: #dee2e6; /* Light Mode */
-    color: #000;
-}
-
-:global(body.dark-mode) .contactContainer {
-    background-color: #212529; /* Dark Mode */
-    color: #fff;
+    background-color: var(--background-primary);
+        box-shadow: 1px 0px 17px 2px rgba(0, 0, 0, 0.1)
 }
 
 
-
-/* h1 inside Contact */
 .contactContainer h1 {
-    color: var(--color-primary);
+    color: var(--text-primary);
+    margin-bottom: 1rem;
+    font-size: 2.5rem;
+    font-weight: 700;
 }
 
-/* Form Styles */
+.contactContainer p {
+    color: var(--text-secondary);
+    margin-bottom: 2rem;
+    font-size: 1.1rem;
+    line-height: 1.6;
+}
+
 .contactForm {
     display: flex;
     flex-direction: column;
-    gap: 15px;
-    margin-top: 20px;
+    gap: 1rem;
 }
 
 .contactForm label {
-    text-align: left;
-    font-weight: bold;
-    color: var(--color-secondary);
+    color: var(--text-primary);
+    font-size: 1rem;
+    font-weight: 500;
 }
 
 .contactForm input,
 .contactForm textarea {
     width: 100%;
-    padding: 10px;
-    border: 2px solid var(--color-secondary);
-    border-radius: var(--border-radius);
-    background: transparent;
-    color: inherit;
-    font-size: 16px;
+    padding: 0.8rem;
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    background-color: var(--background-secondary);
+    color: var(--text-primary);
+    font-size: 1rem;
+    transition: border-color 0.3s ease;
 }
 
 .contactForm textarea {
-    min-height: 100px;
+    min-height: 150px;
     resize: vertical;
 }
 
-/* Submit Button */
+.contactForm input:focus,
+.contactForm textarea:focus {
+    outline: none;
+    border-color: var(--accent-color);
+}
+
 .submitButton {
-    background-color: var(--color-primary);
-    color: white;
+    background-color: var(--accent-color);
+    color: var(--text-on-accent);
+    padding: 1rem 2rem;
     border: none;
-    padding: 12px;
-    font-size: 18px;
+    border-radius: 6px;
+    font-size: 1rem;
+    font-weight: 600;
     cursor: pointer;
-    border-radius: var(--border-radius);
-    transition: 0.3s;
+    transition: background-color 0.3s ease;
+    margin-top: 1rem;
 }
 
 .submitButton:hover {
-    background-color: #1da837;
+    background-color: var(--accent-color-hover);
+}
+
+@media (max-width: 768px) {
+    .contactContainer {
+        margin: 1rem;
+        padding: 1.5rem;
+    }
+
+    .contactContainer h1 {
+        font-size: 2rem;
+    }
 }

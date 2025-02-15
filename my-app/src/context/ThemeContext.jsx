@@ -1,43 +1,51 @@
 "use client"; // لضمان عمله في بيئة المتصفح فقط
-import { createContext, useContext, useState, useEffect } from "react";
+import React, { createContext, useContext, useState, useEffect } from "react";
 
 // 1️⃣ إنشاء السياق (Context)
 const ThemeContext = createContext();
 
 // 2️⃣ إنشاء الموفر (Provider) لإدارة الحالة
-export const ThemeProvider = ({ children }) => {
-  const [mode, setMode] = useState("light");
+export function ThemeProvider({ children }) {
+  const [isDarkMode, setIsDarkMode] = useState(false);
 
-  // عند تحميل التطبيق، نحاول استرجاع آخر وضع تم تخزينه
+  // Load saved theme on mount
   useEffect(() => {
     const savedTheme = localStorage.getItem("theme");
     if (savedTheme) {
-      setMode(savedTheme);
-      document.documentElement.classList.add(savedTheme);
+      setIsDarkMode(savedTheme === "dark");
     }
   }, []);
 
-  // دالة التبديل بين الوضع الفاتح والداكن
+  // Update document classes and localStorage when theme changes
+  useEffect(() => {
+    if (isDarkMode) {
+      document.documentElement.classList.add("dark-theme");
+      document.body.classList.add("dark-mode");
+      localStorage.setItem("theme", "dark");
+    } else {
+      document.documentElement.classList.remove("dark-theme");
+      document.body.classList.remove("dark-mode");
+      localStorage.setItem("theme", "light");
+    }
+  }, [isDarkMode]);
+
   const toggleTheme = () => {
-    setMode((prevMode) => {
-      const newMode = prevMode === "light" ? "dark" : "light";
-      localStorage.setItem("theme", newMode);
-
-      // إزالة الوضع السابق وإضافة الوضع الجديد إلى العنصر <html>
-      document.documentElement.classList.remove(prevMode);
-      document.documentElement.classList.add(newMode);
-
-      return newMode;
-    });
+    setIsDarkMode(prev => !prev);
   };
 
   return (
-    <ThemeContext.Provider value={{ mode, toggleTheme }}>
+    <ThemeContext.Provider value={{ isDarkMode, toggleTheme }}>
       {children}
     </ThemeContext.Provider>
   );
-};
+}
 
 // 3️⃣ إنشاء `useTheme` لتسهيل الوصول إلى السياق
-export const useTheme = () => useContext(ThemeContext);
+export function useTheme() {
+  const context = useContext(ThemeContext);
+  if (!context) {
+    throw new Error('useTheme must be used within a ThemeProvider');
+  }
+  return context;
+}
     

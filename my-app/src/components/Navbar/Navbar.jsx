@@ -1,51 +1,75 @@
 "use client"; // تأكيد أن هذا الملف يعمل على العميل فقط
 
-import { useState, useEffect } from "react";
-import Link from "next/link";
-import style from "./Navbar.module.css";
+import React, { useState, useEffect } from 'react';
+import Link from 'next/link';
+import styles from './Navbar.module.css';
 import ToggleSwitch from "@/app/ToggleSwitch/ToggleSwitch";
 import Btn from "../BTN/Btn";
+import { useCart } from '@/context/CartContext';
+import { useTheme } from '@/context/ThemeContext';
+import { useRouter } from 'next/navigation';
 
-export default function Navbar() {
-  const [isDarkMode, setIsDarkMode] = useState(false); // تعيين قيمة افتراضية
-  const [isMounted, setIsMounted] = useState(false); // للتحقق مما إذا كان المكون قد تم تحميله أم لا
+const Navbar = () => {
+  const [isScrolled, setIsScrolled] = useState(false);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const { cartItems } = useCart();
+  const { isDarkMode, toggleTheme } = useTheme();
+  const router = useRouter();
+  
+  const totalItems = cartItems.reduce((sum, item) => sum + item.quantity, 0);
 
   useEffect(() => {
-    setIsMounted(true); // يتم تعيين true بمجرد تحميل الصفحة بالكامل
-    const theme = localStorage.getItem("theme");
-    setIsDarkMode(theme === "dark");
+    const handleScroll = () => {
+      if (window.scrollY > 0) {
+        setIsScrolled(true);
+      } else {
+        setIsScrolled(false);
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  useEffect(() => {
-    if (isMounted) {
-      document.body.classList.toggle("dark-mode", isDarkMode);
-      localStorage.setItem("theme", isDarkMode ? "dark" : "light");
-    }
-  }, [isDarkMode, isMounted]);
-
-  // تأخير عرض الـ Navbar حتى يتم تحميل الصفحة بالكامل
-  if (!isMounted) {
-    return null;
-  }
-
   return (
-    <div className={style.nav}>
-      <nav className={`navbar navbar-expand-lg ${isDarkMode ? "navbar-dark bg-dark" : "navbar-light bg-light"} ${style.navbar2}`}>
-        <Link className="navbar-brand" href="/">Navbar</Link>
-        <div className="collapse navbar-collapse justify-content-between" id="navbarNavAltMarkup">
-          <div className="navbar-nav">
-            <Link className="nav-item nav-link active" href="/">Home</Link>
-            <Link className="nav-item nav-link" href="/products">Products</Link>
-            <Link className="nav-item nav-link" href="/category">Category</Link>
-            <Link className="nav-item nav-link" href="/contact">Contact</Link>
-            <Link className="nav-item nav-link" href="/blog">Blog</Link>
-          </div>
-          <div className="d-flex">
-            <ToggleSwitch setIsDarkMode={setIsDarkMode} />
-            <Btn text="Log out" className={style.logOut} />
-          </div>
+    <nav className={`navbar ${isScrolled ? 'scrolled' : ''}`}>
+      <div className={styles.container}>
+        <Link href="/" className={styles.logo}>
+          HexaShop
+        </Link>
+
+        <button 
+          className={styles.menuButton} 
+          onClick={() => setIsMenuOpen(!isMenuOpen)}
+        >
+          {isMenuOpen ? '✕' : '☰'}
+        </button>
+
+        <div className={`${styles.navLinks} ${isMenuOpen ? styles.active : ''}`}>
+          <Link href="/" onClick={() => setIsMenuOpen(false)}>Home</Link>
+          <Link href="/products" onClick={() => setIsMenuOpen(false)}>Products</Link>
+          <Link href="/about" onClick={() => setIsMenuOpen(false)}>About</Link>
+          <Link href="/contact" onClick={() => setIsMenuOpen(false)}>Contact</Link>
+          <Link href="/blog" onClick={() => setIsMenuOpen(false)}>Blog</Link>
         </div>
-      </nav>
-    </div>
+
+        <div className={styles.rightSection}>
+          <ToggleSwitch isDarkMode={isDarkMode} setIsDarkMode={toggleTheme} />
+          <div 
+            className={styles.cartIcon} 
+            onClick={() => {
+              router.push('/cart');
+              setIsMenuOpen(false);
+            }}
+          >
+            🛒
+            {totalItems > 0 && <span className={styles.cartBadge}>{totalItems}</span>}
+          </div>
+          <Btn text="Log out" className={styles.logOut} />
+        </div>
+      </div>
+    </nav>
   );
-}
+};
+
+export default Navbar;

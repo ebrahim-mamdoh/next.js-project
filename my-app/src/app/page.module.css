@@ -5,7 +5,7 @@
   width: 80%;
   margin: auto;
   gap: 50px;
-  
+  padding-top: 100px;
 }
 
 .col {
@@ -59,4 +59,20 @@
   .button {
     width: 100%;
   }
+}
+
+.productsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+  padding: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.sectionTitle {
+  text-align: center;
+  margin: 2rem 0;
+  font-size: 2rem;
+  color: #333;
 }
