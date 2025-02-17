@@ -60,9 +60,16 @@ export default async function AboutPage() {
     <Suspense fallback={<Loader />}>
       <div className="pageWrapper">
         <AboutHero />
-        
-        {/* Mission Section */}
-        <section className={styles.missionSection}>
+
+      {/* Brand Slider */}
+      <BrandSlider brandImages={brandLogos} />
+
+
+
+
+
+      {/* Mission Section */}
+      <section className={styles.missionSection}>
           <div className={styles.missionContent}>
             <h2 className={styles.sectionTitle}>Our Mission</h2>
             <p className={styles.missionText}>
@@ -73,11 +80,13 @@ export default async function AboutPage() {
           </div>
         </section>
 
-        {/* Brand Slider */}
-        <BrandSlider brandImages={brandLogos} />
 
-        {/* Features Section */}
-        <section className={styles.featuresSection}>
+
+
+
+
+          {/* Features Section */}
+          <section className={styles.featuresSection}>
           <h2 className={styles.sectionTitle}>Why Choose Us</h2>
           <div className={styles.featuresGrid}>
             <div className={styles.featureCard}>
@@ -102,26 +111,54 @@ export default async function AboutPage() {
             </div>
           </div>
         </section>
+      
+  
+  
+      
 
         {/* Values Section */}
         <section className={styles.valuesSection}>
           <div className={styles.valueContent}>
-            <div className={styles.valueText}>
-              <h2 className={styles.sectionTitle}>Our Values</h2>
-              <ul className={styles.valuesList}>
-                <li>
-                  <span className={styles.valueHighlight}>Innovation</span>
-                  Constantly improving our services
-                </li>
-                <li>
-                  <span className={styles.valueHighlight}>Integrity</span>
-                  Always honest and transparent
-                </li>
-                <li>
-                  <span className={styles.valueHighlight}>Quality</span>
-                  Never compromising on excellence
-                </li>
-              </ul>
+            <h2 className={styles.sectionTitle}>Our Core Values</h2>
+            <div className={styles.valuesGrid}>
+              <div className={styles.valueCard}>
+                <div className={styles.valueIcon}>💡</div>
+                <div className={styles.valueInfo}>
+                  <h3>Innovation</h3>
+                  <p>Constantly pushing boundaries and embracing new technologies to enhance your shopping experience.</p>
+                  <ul className={styles.valuePoints}>
+                    <li>Advanced Tech Solutions</li>
+                    <li>Continuous Improvement</li>
+                    <li>Creative Solutions</li>
+                  </ul>
+                </div>
+              </div>
+
+              <div className={styles.valueCard}>
+                <div className={styles.valueIcon}>⚖️</div>
+                <div className={styles.valueInfo}>
+                  <h3>Integrity</h3>
+                  <p>Building trust through transparency and honest business practices in every interaction.</p>
+                  <ul className={styles.valuePoints}>
+                    <li>Transparent Pricing</li>
+                    <li>Honest Communication</li>
+                    <li>Ethical Business</li>
+                  </ul>
+                </div>
+              </div>
+
+              <div className={styles.valueCard}>
+                <div className={styles.valueIcon}>✨</div>
+                <div className={styles.valueInfo}>
+                  <h3>Quality</h3>
+                  <p>Delivering excellence in every product and maintaining the highest standards.</p>
+                  <ul className={styles.valuePoints}>
+                    <li>Premium Products</li>
+                    <li>Rigorous Testing</li>
+                    <li>Quality Assurance</li>
+                  </ul>
+                </div>
+              </div>
             </div>
           </div>
         </section>

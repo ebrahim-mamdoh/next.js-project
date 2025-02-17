@@ -10,6 +10,9 @@ import 'swiper/css';
 import 'swiper/css/autoplay';
 
 export default function BrandSlider({ brandImages }) {
+  // Duplicate the array to create a seamless loop
+  const duplicatedBrands = [...brandImages, ...brandImages, ...brandImages];
+
   return (
     <section className={styles.sliderSection}>
       <h2 className={styles.sectionTitle}>Our Trusted Brands</h2>
@@ -19,17 +22,15 @@ export default function BrandSlider({ brandImages }) {
           spaceBetween={40}
           slidesPerView={5}
           loop={true}
-          speed={3000}
-          centeredSlides={true}
-          allowTouchMove={false}
-          watchSlidesProgress={true}
+          speed={2000}
+          allowTouchMove={true}
           observer={true}
           observeParents={true}
           autoplay={{
-            delay: 0,
+            
             disableOnInteraction: false,
-            pauseOnMouseEnter: true,
-            stopOnLastSlide: false
+            pauseOnMouseEnter: false,
+            waitForTransition: false
           }}
           className={styles.brandSwiper}
           breakpoints={{
@@ -51,7 +52,7 @@ export default function BrandSlider({ brandImages }) {
             }
           }}
         >
-          {brandImages.map((brand, index) => (
+          {duplicatedBrands.map((brand, index) => (
             <SwiperSlide key={index} className={styles.brandSlide}>
               <div className={styles.brandImageContainer}>
                 <Image
