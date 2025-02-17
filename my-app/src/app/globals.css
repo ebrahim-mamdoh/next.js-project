@@ -14,6 +14,8 @@
   --nav-background: rgba(255, 255, 255, 0.95);
   --nav-shadow: rgba(0, 0, 0, 0.1);
   --shadow-color: rgba(0, 0, 0, 0.1);
+  --image-filter: none;
+  --swiper-theme-color: var(--primary-color);
 }
 
 .dark-theme {
@@ -32,6 +34,8 @@
   --nav-background: rgba(15, 23, 42, 0.95);
   --nav-shadow: rgba(0, 0, 0, 0.3);
   --shadow-color: rgba(0, 0, 0, 0.3);
+  --image-filter: brightness(0.8) contrast(1.2);
+  --swiper-theme-color: var(--primary-color);
 }
 
 body {
@@ -139,5 +143,19 @@ main {
 
   .page-container {
     padding: 1rem;
+  }
+}
+
+.pageWrapper {
+  width: 80%;
+  margin: 140px auto 0;
+  padding: 0 20px;
+  max-width: 1400px;
+}
+
+@media (max-width: 768px) {
+  .pageWrapper {
+    width: 90%;
+    margin: 120px auto 0;
   }
 }

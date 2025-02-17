@@ -10,5 +10,9 @@ async function getProducts() {
 export default async function ProductsPage() {
   const products = await getProducts();
   
-  return <ProductList initialProducts={products} />;
+  return (
+    <div className="pageWrapper">
+      <ProductList initialProducts={products} />
+    </div>
+  );
 }

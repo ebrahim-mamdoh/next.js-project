@@ -1,10 +1,17 @@
 import React from "react";
-import style from "./Btn.module.css";
+import styles from "./Btn.module.css";
 
-export default function Btn({ text = "Default", onClick, className = "" }) {
+const Btn = ({ text, onClick, type = "button" }) => {
   return (
-    <button className={`${style.button} ${className}`} onClick={onClick}>
+    <button 
+      className={styles.button}
+      onClick={onClick}
+      type={type}
+    >
       {text}
+      <span className={styles.arrow}>→</span>
     </button>
   );
-}
+};
+
+export default Btn;

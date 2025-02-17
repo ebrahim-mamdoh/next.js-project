@@ -1,0 +1,19 @@
+.themeToggle {
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  padding: 0.5rem;
+  border-radius: 50%;
+  transition: all 0.3s ease;
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  z-index: 1000;
+  background-color: var(--card-background);
+  box-shadow: 0 2px 10px var(--shadow-color);
+}
+
+.themeToggle:hover {
+  transform: scale(1.1);
+} 

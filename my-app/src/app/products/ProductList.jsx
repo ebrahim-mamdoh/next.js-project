@@ -41,7 +41,7 @@ export default function ProductList({ initialProducts }) {
   };
 
   const renderProduct = (product) => (
-    <div key={product.id} className="col-lg-4 col-md-6 col-12">
+    <div key={product.id}>
       <Link href={`/product/${product.id}`} className={styles.productLink}>
         <div className={styles.productCard}>
           <ProductImage
@@ -69,11 +69,11 @@ export default function ProductList({ initialProducts }) {
 
   if (!mounted) {
     return (
-      <div className="container mt-5">
+      <div>
         <div className="d-flex justify-content-between align-items-center mb-5">
           <h1 className="fw-bold">Our Products</h1>
         </div>
-        <div className="row g-4">
+        <div className={styles.productsGrid}>
           {initialProducts.map(renderProduct)}
         </div>
       </div>
@@ -81,7 +81,7 @@ export default function ProductList({ initialProducts }) {
   }
 
   return (
-    <div className="container mt-5">
+    <div>
       <div className="d-flex justify-content-between align-items-center mb-5">
         <h1 className="fw-bold">Our Products</h1>
         <button 
@@ -91,7 +91,7 @@ export default function ProductList({ initialProducts }) {
           {theme === 'light' ? '🌙' : '☀️'} {theme === 'light' ? 'Dark' : 'Light'} Mode
         </button>
       </div>
-      <div className="row g-4">
+      <div className={styles.productsGrid}>
         {initialProducts.map(renderProduct)}
       </div>
     </div>

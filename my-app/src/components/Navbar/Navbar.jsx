@@ -2,12 +2,12 @@
 
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
-import styles from './Navbar.module.css';
 import ToggleSwitch from "@/app/ToggleSwitch/ToggleSwitch";
 import Btn from "../BTN/Btn";
 import { useCart } from '@/context/CartContext';
 import { useTheme } from '@/context/ThemeContext';
 import { useRouter } from 'next/navigation';
+import styles from './Navbar.module.css';
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);

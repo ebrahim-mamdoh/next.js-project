@@ -1,4 +1,6 @@
 /* Styling for the product card */
+
+
 .productCard {
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     text-decoration: none; /* Remove underline from links */
@@ -142,5 +144,19 @@
     display: inline-block;
     padding: 4px 12px;
     border-radius: 20px;
+  }
+  
+  .productsGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 2rem;
+    width: 100%;
+  }
+  
+  @media (max-width: 768px) {
+    .productsGrid {
+      grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+      gap: 1rem;
+    }
   }
   
