@@ -9,12 +9,13 @@ import Link from 'next/link';
 import { motion } from 'framer-motion';  // Make sure this import is correct
 import { FaShippingFast, FaHeadset, FaShieldAlt, FaGift } from 'react-icons/fa';
 
+
 // Sample featured products data
 const featuredProducts = [
-  { id: 1, name: "Premium Watch", price: "$299", image: "/images/watch.jpg" },
-  { id: 2, name: "Designer Bag", price: "$199", image: "/images/bag.jpg" },
-  { id: 3, name: "Smart Device", price: "$499", image: "/images/device.jpg" },
-  { id: 4, name: "Luxury Perfume", price: "$89", image: "/images/perfume.jpg" },
+  { id: 1, name: "Premium Watch", image: "https://images.unsplash.com/photo-1523275335684-37898b6baf30" },
+  { id: 2, name: "Designer Bag", image: "https://images.unsplash.com/photo-1548036328-c9fa89d128fa" },
+  { id: 3, name: "Smart Device", image: "https://images.unsplash.com/photo-1546868871-7041f2a55e12" },
+  { id: 4, name: "Luxury Perfume", image: "https://images.unsplash.com/photo-1541643600914-78b084683601" }
 ];
 
 export default function Home() {
@@ -63,9 +64,9 @@ export default function Home() {
             initial={{ x: 100, opacity: 0 }}
             animate={{ x: 0, opacity: 1 }}
             transition={{ duration: 0.8 }}
-          >
+          >   
             <Image 
-              src="/images/hero-image.jpg" 
+              src="https://images.unsplash.com/photo-1607082348824-0a96f2a4b9da"
               alt="Online Shopping" 
               width={500} 
               height={500}
@@ -131,16 +132,19 @@ export default function Home() {
                 viewport={{ once: true }}
                 transition={{ duration: 0.5 }}
               >
-                <Image 
-                  src={product.image} 
-                  alt={product.name} 
-                  width={200} 
-                  height={200}
-                  className={style.productImage}
-                />
-                <h3>{product.name}</h3>
-                <p>{product.price}</p>
-                <Btn text="Add to Cart" />
+                <div className={style.imageContainer}>
+                  <Image 
+                    src={product.image} 
+                    alt={product.name} 
+                    width={300} 
+                    height={300}
+                    className={style.productImage}
+                    priority
+                  />
+                </div>
+                <div className={style.productName}>
+                  {product.name}
+                </div>
               </motion.div>
             ))}
           </div>
