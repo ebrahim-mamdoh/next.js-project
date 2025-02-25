@@ -84,12 +84,12 @@ export default function ProductList({ initialProducts }) {
     <div>
       <div className="d-flex justify-content-between align-items-center mb-5">
         <h1 className="fw-bold">Our Products</h1>
-        <button 
+        {/* <button 
           onClick={toggleTheme}
           className="btn btn-outline-primary rounded-pill px-4"
         >
           {theme === 'light' ? '🌙' : '☀️'} {theme === 'light' ? 'Dark' : 'Light'} Mode
-        </button>
+        </button> */}
       </div>
       <div className={styles.productsGrid}>
         {initialProducts.map(renderProduct)}
