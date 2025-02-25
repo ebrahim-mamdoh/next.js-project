@@ -1,13 +1,13 @@
 "use client";  // Add this at the top since we're using client-side features
 
 import React, { Suspense } from 'react';
-import style from './page.module.css';
 import Image from 'next/image';
 import Btn from '@/components/BTN/Btn';
 import Loader from '@/components/Loader/Loader';
 import Link from 'next/link';
 import { motion } from 'framer-motion';  // Make sure this import is correct
 import { FaShippingFast, FaHeadset, FaShieldAlt, FaGift } from 'react-icons/fa';
+import style from './page.module.css';
 
 
 // Sample featured products data
@@ -77,43 +77,43 @@ export default function Home() {
         </motion.div>
 
         {/* Features Section */}
-        <section className={style.features}>
+        <section className={`${style.features} dark:bg-[#1a1a1a]`}>
           <div className={style.featuresGrid}>
             <motion.div 
-              className={style.featureCard}
+              className={`${style.featureCard} dark:bg-[#2a2a2a] dark:shadow-[0_4px_6px_rgba(0,0,0,0.2)]`}
               whileHover={{ y: -10 }}
               transition={{ type: "spring", stiffness: 300 }}
             >
-              <FaShippingFast className={style.featureIcon} />
-              <h3>Free Shipping</h3>
-              <p>On orders over $100</p>
+              <FaShippingFast className={`${style.featureIcon} dark:text-[#60a5fa]`} />
+              <h3 className="dark:text-white">Free Shipping</h3>
+              <p className="dark:text-gray-400">On orders over $100</p>
             </motion.div>
             <motion.div 
-              className={style.featureCard}
+              className={`${style.featureCard} dark:bg-[#2a2a2a] dark:shadow-[0_4px_6px_rgba(0,0,0,0.2)]`}
               whileHover={{ y: -10 }}
               transition={{ type: "spring", stiffness: 300 }}
             >
-              <FaHeadset className={style.featureIcon} />
-              <h3>24/7 Support</h3>
-              <p>Get help anytime</p>
+              <FaHeadset className={`${style.featureIcon} dark:text-[#60a5fa]`} />
+              <h3 className="dark:text-white">24/7 Support</h3>
+              <p className="dark:text-gray-400">Get help anytime</p>
             </motion.div>
             <motion.div 
-              className={style.featureCard}
+              className={`${style.featureCard} dark:bg-[#2a2a2a] dark:shadow-[0_4px_6px_rgba(0,0,0,0.2)]`}
               whileHover={{ y: -10 }}
               transition={{ type: "spring", stiffness: 300 }}
             >
-              <FaShieldAlt className={style.featureIcon} />
-              <h3>Secure Payment</h3>
-              <p>100% secure payment</p>
+              <FaShieldAlt className={`${style.featureIcon} dark:text-[#60a5fa]`} />
+              <h3 className="dark:text-white">Secure Payment</h3>
+              <p className="dark:text-gray-400">100% secure payment</p>
             </motion.div>
             <motion.div 
-              className={style.featureCard}
+              className={`${style.featureCard} dark:bg-[#2a2a2a] dark:shadow-[0_4px_6px_rgba(0,0,0,0.2)]`}
               whileHover={{ y: -10 }}
               transition={{ type: "spring", stiffness: 300 }}
             >
-              <FaGift className={style.featureIcon} />
-              <h3>Special Offers</h3>
-              <p>On selected items</p>
+              <FaGift className={`${style.featureIcon} dark:text-[#60a5fa]`} />
+              <h3 className="dark:text-white">Special Offers</h3>
+              <p className="dark:text-gray-400">On selected items</p>
             </motion.div>
           </div>
         </section>
