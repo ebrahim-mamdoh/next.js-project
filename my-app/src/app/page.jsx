@@ -8,8 +8,7 @@ import Link from 'next/link';
 import { motion } from 'framer-motion';  // Make sure this import is correct
 import { FaShippingFast, FaHeadset, FaShieldAlt, FaGift } from 'react-icons/fa';
 import '@fortawesome/fontawesome-free/css/all.min.css';
-
-import style from './page.module.css';
+import heroImage from '@/../public/Ecommerce/webHero.gif';
 
 // Sample featured products data
 const featuredProducts = [
@@ -19,6 +18,7 @@ const featuredProducts = [
   { id: 4, name: "Luxury Perfume", image: "https://images.unsplash.com/photo-1541643600914-78b084683601" }
 ];
 
+import style from './page.module.css';
 export default function Home() {
   return (
     <Suspense fallback={<Loader />}>
@@ -67,7 +67,7 @@ export default function Home() {
             transition={{ duration: 0.8 }}
           >
             <Image
-              src="https://images.unsplash.com/photo-1607082348824-0a96f2a4b9da"
+              src={heroImage}
               alt="Online Shopping"
               width={500}
               height={500}
