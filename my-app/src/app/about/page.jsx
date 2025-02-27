@@ -1,5 +1,4 @@
 import React, { Suspense } from 'react';
-import styles from './about.module.css';
 import AboutHero from './components/AboutHero';
 import BrandSlider from './components/BrandSlider';
 import Loader from '@/components/Loader/Loader';
@@ -14,6 +13,7 @@ import rolex from '../../../assets/prands/rolex.png'
 import tommy from '../../../assets/prands/tommy.png'
 import anderArmour from '../../../assets/prands/UnderArmour.png'
 import nailcounture from '../../../assets/prands/nailcounture.jpg'
+import styles from './about.module.css';
 
 const brandLogos = [
   dior,

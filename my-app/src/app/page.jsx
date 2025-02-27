@@ -1,14 +1,15 @@
 "use client";  // Add this at the top since we're using client-side features
 
 import React, { Suspense } from 'react';
-import style from './page.module.css';
 import Image from 'next/image';
 import Btn from '@/components/BTN/Btn';
 import Loader from '@/components/Loader/Loader';
 import Link from 'next/link';
 import { motion } from 'framer-motion';  // Make sure this import is correct
 import { FaShippingFast, FaHeadset, FaShieldAlt, FaGift } from 'react-icons/fa';
+import '@fortawesome/fontawesome-free/css/all.min.css';
 
+import style from './page.module.css';
 
 // Sample featured products data
 const featuredProducts = [
@@ -23,14 +24,14 @@ export default function Home() {
     <Suspense fallback={<Loader />}>
       <div className="pageWrapper">
         {/* Hero Section */}
-        <motion.div 
+        <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.8 }}
           className={style.container}
         >
           <div className={style.col}>
-            <motion.h1 
+            <motion.h1
               initial={{ y: 30, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
               transition={{ delay: 0.2 }}
@@ -38,7 +39,7 @@ export default function Home() {
             >
               Your Best Online Shop Destination!
             </motion.h1>
-            <motion.p 
+            <motion.p
               initial={{ y: 30, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
               transition={{ delay: 0.4 }}
@@ -59,16 +60,16 @@ export default function Home() {
               </Link>
             </motion.div>
           </div>
-          <motion.div 
+          <motion.div
             className={style.col}
             initial={{ x: 100, opacity: 0 }}
             animate={{ x: 0, opacity: 1 }}
             transition={{ duration: 0.8 }}
-          >   
-            <Image 
+          >
+            <Image
               src="https://images.unsplash.com/photo-1607082348824-0a96f2a4b9da"
-              alt="Online Shopping" 
-              width={500} 
+              alt="Online Shopping"
+              width={500}
               height={500}
               className={style.heroImage}
               priority
@@ -79,7 +80,7 @@ export default function Home() {
         {/* Features Section */}
         <section className={style.features}>
           <div className={style.featuresGrid}>
-            <motion.div 
+            <motion.div
               className={style.featureCard}
               whileHover={{ y: -10 }}
               transition={{ type: "spring", stiffness: 300 }}
@@ -88,7 +89,7 @@ export default function Home() {
               <h3>Free Shipping</h3>
               <p>On orders over $100</p>
             </motion.div>
-            <motion.div 
+            <motion.div
               className={style.featureCard}
               whileHover={{ y: -10 }}
               transition={{ type: "spring", stiffness: 300 }}
@@ -97,7 +98,7 @@ export default function Home() {
               <h3>24/7 Support</h3>
               <p>Get help anytime</p>
             </motion.div>
-            <motion.div 
+            <motion.div
               className={style.featureCard}
               whileHover={{ y: -10 }}
               transition={{ type: "spring", stiffness: 300 }}
@@ -106,7 +107,7 @@ export default function Home() {
               <h3>Secure Payment</h3>
               <p>100% secure payment</p>
             </motion.div>
-            <motion.div 
+            <motion.div
               className={style.featureCard}
               whileHover={{ y: -10 }}
               transition={{ type: "spring", stiffness: 300 }}
@@ -123,7 +124,7 @@ export default function Home() {
           <h2 className={style.sectionTitle}>Featured Products</h2>
           <div className={style.productsGrid}>
             {featuredProducts.map((product) => (
-              <motion.div 
+              <motion.div
                 key={product.id}
                 className={style.productCard}
                 whileHover={{ scale: 1.05 }}
@@ -133,10 +134,10 @@ export default function Home() {
                 transition={{ duration: 0.5 }}
               >
                 <div className={style.imageContainer}>
-                  <Image 
-                    src={product.image} 
-                    alt={product.name} 
-                    width={300} 
+                  <Image
+                    src={product.image}
+                    alt={product.name}
+                    width={300}
                     height={300}
                     className={style.productImage}
                     priority
@@ -152,7 +153,7 @@ export default function Home() {
 
         {/* Newsletter Section */}
         <section className={style.newsletter}>
-          <motion.div 
+          <motion.div
             className={style.newsletterContent}
             initial={{ opacity: 0, y: 50 }}
             whileInView={{ opacity: 1, y: 0 }}
