@@ -8,7 +8,7 @@ import Link from 'next/link';
 import { motion } from 'framer-motion';  // Make sure this import is correct
 import { FaShippingFast, FaHeadset, FaShieldAlt, FaGift } from 'react-icons/fa';
 import '@fortawesome/fontawesome-free/css/all.min.css';
-import heroImage from '@/../public/Ecommerce/webHero.gif';
+import heroImage from '../../public/heroImage.png';
 
 // Sample featured products data
 const featuredProducts = [
