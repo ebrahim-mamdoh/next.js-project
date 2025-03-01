@@ -1,19 +1,20 @@
 "use client";
 import React, { useEffect, useState } from "react";
-import { useParams, useRouter } from "next/navigation";
+import { useRouter } from "next/navigation";
 import Image from "next/image";
 import styles from "./ProductDetails.module.css";
 import Cart from "@/components/Cart/Cart";
 import { useCart } from '@/context/CartContext';
 
-export default function ProductDetails() {
-  const { id } = useParams(); // ✅ Get product ID from URL params
+export default function ProductDetails({ id }) { // ✅ الآن نأخذ `id` كمُدخل من `ProductPage`
   const router = useRouter();
   const [product, setProduct] = useState(null);
   const [loading, setLoading] = useState(true);
   const { addToCart, isCartOpen, setIsCartOpen, cartItems, updateQuantity, removeFromCart } = useCart();
 
   useEffect(() => {
+    if (!id) return;
+    
     async function fetchProduct() {
       try {
         const res = await fetch(`https://dummyjson.com/products/${id}`);
@@ -26,7 +27,8 @@ export default function ProductDetails() {
         setLoading(false);
       }
     }
-    if (id) fetchProduct();
+
+    fetchProduct();
   }, [id]);
 
   const handleAddToCart = () => {
@@ -42,7 +44,7 @@ export default function ProductDetails() {
   return (
     <div className={styles.container}>
       <div className={styles.productDetails}>
-        {/* Product Image */}
+        {/* ✅ صورة المنتج */}
         <div className={styles.imageContainer}>
           <Image
             src={product.thumbnail}
@@ -54,7 +56,7 @@ export default function ProductDetails() {
           />
         </div>
 
-        {/* Product Info */}
+        {/* ✅ معلومات المنتج */}
         <div className={styles.info}>
           <button className={styles.backButton} onClick={() => router.back()}>
             ⬅️ Back
@@ -72,6 +74,7 @@ export default function ProductDetails() {
         </div>
       </div>
 
+      {/* ✅ سلة التسوق */}
       <Cart
         isOpen={isCartOpen}
         onClose={() => setIsCartOpen(false)}

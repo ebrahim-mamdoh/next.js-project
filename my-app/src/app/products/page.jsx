@@ -8,10 +8,10 @@ async function getProducts() {
 }
 
 export default async function ProductsPage() {
-  const products = await getProducts();
+  const products = await getProducts();  // ✅ جلب البيانات في Server Component
   
   return (
-    <div className="pageWrapper">
+    <div >
       <ProductList initialProducts={products} />
     </div>
   );

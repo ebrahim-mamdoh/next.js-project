@@ -50,7 +50,6 @@ const Navbar = () => {
           <Link href="/products" onClick={() => setIsMenuOpen(false)}>Products</Link>
           <Link href="/about" onClick={() => setIsMenuOpen(false)}>About</Link>
           <Link href="/contact" onClick={() => setIsMenuOpen(false)}>Contact</Link>
-          <Link href="/blog" onClick={() => setIsMenuOpen(false)}>Blog</Link>
         </div>
 
         <div className={styles.rightSection}>

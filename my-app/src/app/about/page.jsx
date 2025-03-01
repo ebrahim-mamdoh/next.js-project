@@ -58,7 +58,7 @@ export default async function AboutPage() {
 
   return (
     <Suspense fallback={<Loader />}>
-      <div className="pageWrapper">
+      <div >
         <AboutHero />
 
       {/* Brand Slider */}

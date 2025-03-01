@@ -15,8 +15,8 @@ export default function RootLayout({ children }) {
         <ThemeProvider>
           <CartProvider>
             <Navbar />
-            {children}
-            <Footer/>
+            <main>{children}</main> {/* ✅ استخدام `<main>` لتحسين SEO */}
+            <Footer />
           </CartProvider>
         </ThemeProvider>
       </body>
