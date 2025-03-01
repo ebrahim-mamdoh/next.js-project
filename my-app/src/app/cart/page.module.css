@@ -1,9 +1,10 @@
 .cartPage {
-  padding: 2rem;
   max-width: 1200px;
   margin: 0 auto;
 }
-
+.cartPage h1{
+  margin-top:145px;
+}
 .cartContent {
   display: grid;
   grid-template-columns: 2fr 1fr;
@@ -20,7 +21,7 @@
 .cartItem {
   display: flex;
   padding: 1rem;
-  background: white;
+  background: var( --background-primary);
   border-radius: 8px;
   box-shadow: 0 2px 4px rgba(0,0,0,0.1);
   gap: 1rem;
@@ -72,7 +73,7 @@
 }
 
 .cartSummary {
-  background: white;
+  background: var( --background-primary);
   padding: 1.5rem;
   border-radius: 8px;
   box-shadow: 0 2px 4px rgba(0,0,0,0.1);

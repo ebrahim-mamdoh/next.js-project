@@ -54,19 +54,15 @@ const Navbar = () => {
         </div>
 
         <div className={styles.rightSection}>
-          <ToggleSwitch isDarkMode={isDarkMode} setIsDarkMode={toggleTheme} />
-          <div 
-            className={styles.cartIcon} 
-            onClick={() => {
-              router.push('/cart');
-              setIsMenuOpen(false);
-            }}
-          >
+        <div><ToggleSwitch isDarkMode={isDarkMode} setIsDarkMode={toggleTheme} /></div>
+          <div className={styles.cartIcon} onClick={() => {router.push('/cart');setIsMenuOpen(false); }}>
             🛒
             {totalItems > 0 && <span className={styles.cartBadge}>{totalItems}</span>}
           </div>
-          <div><i className="fa-solid fa-right-from-bracket"></i></div>
+          <div><i className="fa-solid fa-right-from-bracket logOut"></i></div>
         </div>
+
+
       </div>
     </nav>
   );

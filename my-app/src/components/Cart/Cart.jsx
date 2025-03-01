@@ -1,10 +1,10 @@
 import React from 'react';
 import styles from './Cart.module.css';
-import Image from 'next/image';
 
+import Image from 'next/image';
 export default function Cart({ isOpen, onClose, cartItems, updateQuantity, removeFromCart }) {
   const total = cartItems.reduce((sum, item) => sum + (item.price * item.quantity), 0);
-
+  
   return (
     <div className={`${styles.cartContainer} ${isOpen ? styles.open : ''}`}>
       <div className={styles.cartContent}>
