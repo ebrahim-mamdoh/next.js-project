@@ -11,11 +11,11 @@ import 'swiper/css/effect-fade';
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body>
+      <body suppressHydrationWarning> {/* ✅ تجنب تحذيرات الـ Hydration */}
         <ThemeProvider>
           <CartProvider>
             <Navbar />
-            <main>{children}</main> {/* ✅ استخدام `<main>` لتحسين SEO */}
+            <main>{children}</main> {/* ✅ تحسين SEO باستخدام `<main>` */}
             <Footer />
           </CartProvider>
         </ThemeProvider>

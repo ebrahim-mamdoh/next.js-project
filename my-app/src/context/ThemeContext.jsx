@@ -1,23 +1,29 @@
-"use client"; // لضمان عمله في بيئة المتصفح فقط
+"use client";
 import React, { createContext, useContext, useState, useEffect } from "react";
 
-// 1️⃣ إنشاء السياق (Context)
 const ThemeContext = createContext();
 
-// 2️⃣ إنشاء الموفر (Provider) لإدارة الحالة
 export function ThemeProvider({ children }) {
-  const [isDarkMode, setIsDarkMode] = useState(false);
-
-  // Load saved theme on mount
-  useEffect(() => {
+  const [isDarkMode, setIsDarkMode] = useState(() => {
     const savedTheme = localStorage.getItem("theme");
-    if (savedTheme) {
-      setIsDarkMode(savedTheme === "dark");
-    }
-  }, []);
+    return savedTheme ? savedTheme === "dark" : false;
+  });
 
-  // Update document classes and localStorage when theme changes
+  // تحديث الثيم في localStorage عند تغيير isDarkMode
   useEffect(() => {
+    if (isDarkMode) {
+      document.documentElement.classList.add("dark-theme");
+      document.body.classList.add("dark-mode");
+      localStorage.setItem("theme", "dark");
+    } else {
+      document.documentElement.classList.remove("dark-theme");
+      document.body.classList.remove("dark-mode");
+      localStorage.setItem("theme", "light");
+    }
+  }, [isDarkMode]);
+
+  useEffect(() => {
+    if (isDarkMode === null) return; // ✅ لا تقم بأي تغيير قبل تحديد الحالة
     if (isDarkMode) {
       document.documentElement.classList.add("dark-theme");
       document.body.classList.add("dark-mode");
@@ -33,6 +39,8 @@ export function ThemeProvider({ children }) {
     setIsDarkMode(prev => !prev);
   };
 
+  if (isDarkMode === null) return null; // ✅ لا يتم تقديم أي HTML حتى يتم تحديد الثيم
+
   return (
     <ThemeContext.Provider value={{ isDarkMode, toggleTheme }}>
       {children}
@@ -40,7 +48,6 @@ export function ThemeProvider({ children }) {
   );
 }
 
-// 3️⃣ إنشاء `useTheme` لتسهيل الوصول إلى السياق
 export function useTheme() {
   const context = useContext(ThemeContext);
   if (!context) {
@@ -48,4 +55,3 @@ export function useTheme() {
   }
   return context;
 }
-    

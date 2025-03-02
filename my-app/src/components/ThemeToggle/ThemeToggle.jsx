@@ -1,28 +1,25 @@
-'use client'
-import { useState, useEffect } from 'react';
-import styles from './ThemeToggle.module.css';
+import { ThemeProvider } from "@/context/ThemeContext";
+import "bootstrap/dist/css/bootstrap.min.css";
+import "./globals.css";
+import Navbar from "@/components/Navbar/Navbar";
+import Footer from "@/components/Footer/Footer";
+import { CartProvider } from '@/context/CartContext';
+import 'swiper/css';
+import 'swiper/css/autoplay';
+import 'swiper/css/effect-fade';
 
-export default function ThemeToggle() {
-  const [isDark, setIsDark] = useState(false);
-
-  useEffect(() => {
-    const isDarkTheme = document.body.classList.contains('dark-theme');
-    setIsDark(isDarkTheme);
-  }, []);
-
-  const toggleTheme = () => {
-    document.body.classList.toggle('dark-theme');
-    setIsDark(!isDark);
-    localStorage.setItem('theme', isDark ? 'light' : 'dark');
-  };
-
+export default function RootLayout({ children }) {
   return (
-    <button 
-      onClick={toggleTheme} 
-      className={styles.themeToggle}
-      aria-label="Toggle theme"
-    >
-      {isDark ? '☀️' : '🌙'}
-    </button>
+    <html lang="en">
+      <body suppressHydrationWarning> {/* ✅ تجنب تحذيرات الـ Hydration */}
+        <ThemeProvider>
+          <CartProvider>
+            <Navbar />
+            <main>{children}</main> {/* ✅ تحسين SEO باستخدام `<main>` */}
+            <Footer />
+          </CartProvider>
+        </ThemeProvider>
+      </body>
+    </html>
   );
-} 
+}

@@ -28,10 +28,12 @@ export default function ProductList({ initialProducts }) {
   const [theme, setTheme] = useState("light");
 
   useEffect(() => {
-    setMounted(true);
-    const savedTheme = localStorage.getItem("theme") || "light";
-    setTheme(savedTheme);
-    document.documentElement.setAttribute("data-theme", savedTheme);
+    if (typeof window !== 'undefined') {
+      setMounted(true);
+      const savedTheme = localStorage.getItem("theme") || "light";
+      setTheme(savedTheme);
+      document.documentElement.setAttribute("data-theme", savedTheme);
+    }
   }, []);
 
   const toggleTheme = () => {
@@ -40,6 +42,10 @@ export default function ProductList({ initialProducts }) {
     localStorage.setItem("theme", newTheme);
     document.documentElement.setAttribute("data-theme", newTheme);
   };
+
+  if (!mounted) {
+    return null; // Prevent rendering until the component is mounted
+  }
 
   return (
     <div>
